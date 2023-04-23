@@ -1,0 +1,22 @@
+<h3>List of Jobs starting with: {{ query }}</h3>
+
+<div class="search-results">
+  <mat-card *ngFor="let j of jobs">
+    <mat-card-content  [routerLink]="[j.job_id]">{{ j.job_id }}</mat-card-content>
+    <mat-card-content>{{ j.employer_name }}</mat-card-content>
+    <img width="150" height= "150" src="{{j.employer_logo}}"/>
+    <mat-card-content>Job Title: {{ j.job_title}}</mat-card-content>
+    <mat-card-content>{{ j.job_country }}</mat-card-content>
+    <mat-card-content>{{ j.job_employment_type }}</mat-card-content>
+  </mat-card>
+
+</div>
+
+<div class="button-row">
+  <!-- <button mat-flat-button color="primary" (click)="onChangePage(-1)" [disabled]="currOffset <= 0">
+    Prev
+  </button>
+  <button mat-flat-button color="primary" (click)="onChangePage(1)">
+    Next
+  </button> -->
+</div>

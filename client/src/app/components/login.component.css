@@ -1,0 +1,102 @@
+
+.panel-heading {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#forget {
+    min-width: 100px;
+    margin-left: auto;
+    text-decoration: none;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+#login {
+    min-width: 100px;
+    margin-left: auto;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 550;
+    color: #ffffff;
+}
+
+.acc {
+    color: #ffffff;
+}
+
+
+a:hover {
+    text-decoration: none;
+
+}
+
+.form-inline label {
+    padding-left: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.btn {
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.panel {
+    min-height: 380px;
+    border-radius: 12px;
+    background: linear-gradient(to top, #0a66c2d0 50%, #3c95efb5 70%) no-repeat;
+}
+
+.input-field {
+    
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #0a66c2;
+}
+
+.input-field.error {
+    border: 1px solid red;
+    color: red;
+
+}
+
+input[type='text'], [type='password'] {
+        border: none;
+        outline: none;
+        box-shadow: none;
+        width:100%;
+    }
+
+.fa-eye-slash.btn {
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+}
+
+img {
+
+    width: 170px;
+    height: 50px;
+    position: relative;
+ 
+}
+
+.bg-image {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    }
+
+#overlay {
+    background-color: rgba(0, 0, 0, 0.5); 
+   
+}

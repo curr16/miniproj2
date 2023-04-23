@@ -1,0 +1,96 @@
+
+img {
+
+    width: 170px;
+    height: 50px;
+    position: relative;
+ 
+}
+
+.bg-image {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    }
+
+#overlay {
+    background: linear-gradient(to top, #0a66c23a 50%, #3c95ef63 70%) no-repeat;
+   
+   
+}
+
+.test {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+}
+
+
+a:hover {
+    text-decoration: none;
+
+}
+
+.form-inline label {
+    padding-left: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.btn {
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+
+.input-field {
+    width: 100%;
+    height: 100px;
+    position: relative;
+
+}
+
+.input-field input {
+    width: 100%;
+    padding: 0 30px;
+    border-radius: 50px;
+    border: none;
+    font-size: 16px;
+    position: relative;
+    height: 70px;
+}
+
+.input-field button {
+    position: absolute;
+    right: 6px;
+    height: 60px;
+    border: none;
+    color: #fff;
+    background: blue;
+    top: 5px;
+    border-radius: 50px; 
+    width: 50px;
+}
+
+.input-field.error {
+    border: 1px solid red;
+    color: red;
+
+}
+
+input[type='text'], [type='password'] {
+        border: none;
+        outline: none;
+        box-shadow: none;
+        width:100%;
+    }
+
+.fa-eye-slash.btn {
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+}

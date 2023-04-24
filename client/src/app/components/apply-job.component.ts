@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApplyJob, JobDetails } from '../models/JobListing.model';
 import { JobListingService } from '../service/JobListing.service';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-apply-job',
@@ -22,7 +23,7 @@ param$!: Subscription
 jobDetail: JobDetails[] = []
 companyName!: string
 
-constructor(private fb: FormBuilder, private jobListingSvc: JobListingService, private router: Router, private activatedRoute: ActivatedRoute) {}
+constructor(private fb: FormBuilder, private jobListingSvc: JobListingService, private router: Router, private activatedRoute: ActivatedRoute, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.uploadForm = this.createForm()
@@ -46,6 +47,9 @@ submitForm() {
   jobApp.resume = this.image.nativeElement.files[0]
 
   this.jobListingSvc.uploadResume(jobApp)
+  this.toastr.success('Your application has been submitted successfully');
+
+  this.uploadForm.reset()
 
 }
 

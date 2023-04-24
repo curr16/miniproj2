@@ -13,7 +13,12 @@ export class JobSearchComponent implements OnInit {
   form!: FormGroup;
   email!: string
 
-  constructor(private fb: FormBuilder, private router: Router, private userSvc: UserService) {}
+  // storage: Storage = localStorage
+  storage: Storage = sessionStorage
+
+  constructor(private fb: FormBuilder, private router: Router, private userSvc: UserService) {
+
+  }
 
   ngOnInit(): void {
     this.form = this.createForm();

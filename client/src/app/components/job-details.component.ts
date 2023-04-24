@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { JobDetails } from '../models/JobListing.model';
 import { JobListingService } from '../service/JobListing.service';
@@ -20,22 +21,27 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   email!: string
   defaultImage: string = "assets/images/placeholder.png"
 
+   // storage: Storage = localStorage
+   storage: Storage = sessionStorage
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private jobSvc: JobListingService,
     private userSvc: UserService,
     private router: Router,
-    
+    private toastr: ToastrService
 
-  ) {}
+  ) {
+    let data = JSON.parse(this.storage.getItem('useraccount')!);
+    this.email = data?.email
+  }
 
   ngOnInit(): void {
-    
+
     // get job id from current route
     this.routeSub$ = this.activatedRoute.params.subscribe((params) => {
       this.job_id = params['job_id'];
-      this.email = this.userSvc.email
+      // this.email = this.userSvc.email
       this.jobSvc
       .getJobById(this.job_id)
       .then((res) => {
@@ -48,15 +54,16 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
         console.log(err);
       });
     });
-    
+
 
     // retrieve job details from server
-    
-    
+
+
   }
 
   onSubmit(i: number) {
     this.userSvc.saveJob(this.email, this.details[i])
+    this.toastr.success('You have successfully saved this job!');
   }
 
   applyJob(i: number) {

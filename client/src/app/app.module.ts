@@ -16,6 +16,8 @@ import { LoginComponent } from './components/login.component';
 import { UserService } from './service/User.service';
 import { ApplyJobComponent } from './components/apply-job.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     JobDetailsComponent,
     RegisterComponent,
     LoginComponent,
-    ApplyJobComponent
+    ApplyJobComponent,
+    LoginStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
 
   ],
   providers: [

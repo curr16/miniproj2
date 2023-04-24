@@ -1,5 +1,7 @@
+<app-login-status></app-login-status>
+
 <mat-card>
-  
+
     <mat-card-content *ngFor="let jd of details, let i = index">
       <mat-card-content>{{ jd.job_id }}</mat-card-content>
       <img width="150" height= "150" src="{{jd.employer_logo}}"/>
@@ -14,10 +16,9 @@
       <span><mat-icon aria-hidden="false" fontIcon="favorite_border" (click)="onSubmit(i)"></mat-icon>Favourite</span>
       <span><mat-icon aria-hidden="false" fontIcon="assignment" (click)="applyJob(i)"></mat-icon>Apply job</span>
     </mat-card-content>
-    
+
   </mat-card>
 
-  
 
- 
-  
+
+

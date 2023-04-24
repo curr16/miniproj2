@@ -70,7 +70,7 @@ public class JobController {
 
         }
 
-        @PostMapping(path = "/ApplyJob", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+        @PostMapping(path = "/apply-job", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
         public void applyJob(@RequestPart MultipartFile resume, @RequestPart String job_id,@RequestPart String firstName,
         @RequestPart String lastName, @RequestPart String email, @RequestPart String phone) throws Exception {
 

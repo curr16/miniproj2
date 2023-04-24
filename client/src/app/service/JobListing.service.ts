@@ -1,12 +1,18 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom, firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { ApplyJob, JobDetails, JobListing } from '../models/JobListing.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobListingService {
+
+  private jobListingUrl = environment.apiUrl + '/search';
+  private jobDetailsUrl = environment.apiUrl + '/job-details';
+  private applyJobUrl = environment.apiUrl + '/apply-job';
+
   constructor(private httpClient: HttpClient) {}
 
   getjobListing(query: string, pages: number) {
@@ -16,7 +22,7 @@ export class JobListingService {
 
     return lastValueFrom(
       this.httpClient.get<JobListing[]>(
-        'http://localhost:8080/api/search',
+        this.jobListingUrl,
         {
           params: params,
         }
@@ -27,7 +33,7 @@ export class JobListingService {
   getJobById(job_id: string): Promise<JobDetails[]> {
     return lastValueFrom(
       this.httpClient.get<JobDetails[]>(
-        `http://localhost:8080/api/job-details/${job_id}`
+        `${this.jobDetailsUrl}/${job_id}`
       )
     );
   }
@@ -41,12 +47,9 @@ export class JobListingService {
     content.set("email", jobApp.email)
     content.set("phone", jobApp.phone)
     content.set("resume", jobApp.resume)
-  
-
-    return firstValueFrom(this.httpClient.post('http://localhost:8080/api/ApplyJob', content))
 
 
-
+    return firstValueFrom(this.httpClient.post(this.applyJobUrl, content))
   }
 
   // postComment(jobId: number, comment: string) {

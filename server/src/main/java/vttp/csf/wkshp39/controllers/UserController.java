@@ -68,7 +68,7 @@ public class UserController {
 
     }
     
-    @PostMapping (path = "/savedJob")
+    @PostMapping (path = "/saved-job")
     public ResponseEntity<String> saveJob(@RequestBody String payload) {
         System.out.println(payload);
 

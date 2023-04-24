@@ -1,8 +1,10 @@
 <div class="login-status-header">
   <img src="assets/images/logo.png" class="logo" />
   <nav class="my-2 text-uppercase fs-4">
-    <a class="p-2" routerLink="/search">Search</a>
-    <a *ngIf="userEmail " class="p-2" routerLink="/favouriteJobs">Favourite Jobs</a>
+    <button class="btn btn-outline-secondary me-2"  routerLink="/search">Search</button>
+    <!-- <a class="p-2" routerLink="/search">Search</a> -->
+    <button *ngIf="userEmail" class="btn btn-outline-secondary me-2" routerLink="/favouriteJobs">Favourite Jobs</button>
+    <!-- <a *ngIf="userEmail" class="p-2" routerLink="/favouriteJobs">Favourite Jobs</a> -->
   </nav>
   <div class="login-status-user-info">
     <h3>Welcome back {{ userFullName }}!</h3>

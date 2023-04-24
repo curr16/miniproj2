@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { JobListing } from '../models/JobListing.model';
@@ -10,7 +10,7 @@ import { UserService } from '../service/User.service';
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.css']
 })
-export class JobListComponent {
+export class JobListComponent implements OnInit{
 
   query!: string; // passed from search component
   routeSub$!: Subscription;
@@ -35,7 +35,9 @@ export class JobListComponent {
       this.query = params['jobStartsWith'];
       // console.log('>>> job query: ' + this.query)
       this.getjobListing();
-      this.email = this.userSvc.email
+      this.userSvc.currentUser.subscribe((user) => {
+        this.email = user
+      })
       console.info("email", this.email)
     });
   }

@@ -1,5 +1,8 @@
 package vttp.csf.wkshp39.repositories;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import vttp.csf.wkshp39.models.Job;
+import vttp.csf.wkshp39.models.JobListings;
 import vttp.csf.wkshp39.models.User;
 import static vttp.csf.wkshp39.repositories.Queries.*;
 
@@ -47,7 +51,16 @@ public class UserRepo {
    
     }
 
+    public List<JobListings> retrieveUserFavouriteJobs(String email) {
+        final SqlRowSet rs = template.queryForRowSet(SQL_GET_FAVOURITE_JOBS, email);
 
+        List<JobListings> jobList = new LinkedList<>();
+		
+		while (rs.next()) {
+            jobList.add(JobListings.create(rs));
+        }
 
+		return jobList;
+    }
     
 }

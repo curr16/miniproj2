@@ -13,5 +13,6 @@ public class Queries {
     public static final String SQL_CREATE_RESUME = "insert into apply_job(job_id, firstName, lastName, email, phone, resume, resume_url)" +
                                                     "values(?, ?, ?, ?, ?, ?, ?)";
 
+    public static final String SQL_GET_FAVOURITE_JOBS = "SELECT * FROM user_job where email = ?";
      
 }

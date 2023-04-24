@@ -2,6 +2,8 @@ package vttp.csf.wkshp39.services;
 
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.csf.wkshp39.models.Job;
+import vttp.csf.wkshp39.models.JobListings;
 import vttp.csf.wkshp39.models.User;
 import vttp.csf.wkshp39.repositories.UserRepo;
 
@@ -50,7 +53,10 @@ public class UserService {
 
     public void saveJob(String email, Job job) {
         userRepo.saveJob(email, job);
- 
+    }
+
+    public List<JobListings> getUserFavouriteJobs(String email){
+        return userRepo.retrieveUserFavouriteJobs(email);
     }
   
 }

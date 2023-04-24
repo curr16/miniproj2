@@ -22,7 +22,9 @@ export class JobSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.createForm();
-    this.email = this.userSvc.email
+    this.userSvc.currentUser.subscribe((user) => {
+      this.email = user
+    })
       console.info("email", this.email)
   }
 

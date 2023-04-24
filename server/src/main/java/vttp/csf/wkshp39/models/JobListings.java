@@ -1,5 +1,7 @@
 package vttp.csf.wkshp39.models;
 
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 
@@ -55,6 +57,17 @@ public class JobListings {
 
         return listings;
     }
+
+    public static JobListings create(SqlRowSet rs) {
+		JobListings job = new JobListings();
+		job.setJobId(rs.getString("job_id"));
+		job.setEmployer_name(rs.getString("employer_name"));
+        job.setJob_title(rs.getString("job_title"));
+        job.setJob_country(rs.getString("job_country"));
+        job.setJob_employment_type(rs.getString("job_employment_type"));
+
+		return job;
+	}
 
 
     

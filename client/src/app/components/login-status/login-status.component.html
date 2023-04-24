@@ -1,5 +1,9 @@
 <div class="login-status-header">
   <img src="assets/images/logo.png" class="logo" />
+  <nav class="my-2 text-uppercase fs-4">
+    <a class="p-2" routerLink="/search">Search</a>
+    <a *ngIf="userEmail " class="p-2" routerLink="/favouriteJobs">Favourite Jobs</a>
+  </nav>
   <div class="login-status-user-info">
     <h3>Welcome back {{ userFullName }}!</h3>
   </div>

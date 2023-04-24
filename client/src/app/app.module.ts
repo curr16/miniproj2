@@ -18,6 +18,7 @@ import { ApplyJobComponent } from './components/apply-job.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginStatusComponent } from './components/login-status/login-status.component';
 import { ToastrModule } from 'ngx-toastr';
+import { FavouriteJobsComponent } from './components/favourite-jobs/favourite-jobs.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterComponent,
     LoginComponent,
     ApplyJobComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    FavouriteJobsComponent
   ],
   imports: [
     BrowserModule,

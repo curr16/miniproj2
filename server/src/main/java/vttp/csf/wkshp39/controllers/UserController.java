@@ -5,20 +5,26 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 
 import java.io.StringReader;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.csf.wkshp39.models.Job;
+import vttp.csf.wkshp39.models.JobListings;
 import vttp.csf.wkshp39.models.User;
 import vttp.csf.wkshp39.services.UserService;
 import vttp.csf.wkshp39.services.googleAPIservice;
@@ -82,7 +88,21 @@ public class UserController {
         userSvc.saveJob(email, job);
         
         return ResponseEntity.ok("success");
+    }
 
+    @GetMapping (path = "/favourite-jobs/{user}")
+    public ResponseEntity<String> getFavouriteJobsByUser(@PathVariable String user){
+        System.out.println(user);
+
+        List<JobListings> favouriteJobListings = userSvc.getUserFavouriteJobs(user);
+        JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
+
+        // add each Job listing -> JsonObject
+        favouriteJobListings.forEach(j -> arrBuilder.add(j.toJson()));
+    
+        JsonArray resp = arrBuilder.build();
+
+        return ResponseEntity.ok(resp.toString());
     }
 
 }

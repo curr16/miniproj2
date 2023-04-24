@@ -15,10 +15,10 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 @Configuration
 public class S3Config {
 
-    @Value("${ACCESS_KEY}")
+    @Value("${access.key}")
     private String accessKey;
 
-    @Value("${SECRET_KEY}")
+    @Value("${secret.key}")
     private String secretKey;
 
 

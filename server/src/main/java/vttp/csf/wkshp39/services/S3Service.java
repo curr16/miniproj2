@@ -25,7 +25,7 @@ public class S3Service {
     @Value("${spaces.bucket}")
     private String spacesBucket;
 
-    @Value("${spacesEndpointURL}")
+    @Value("${spaces.endpoint.url}")
     private String spacesEndpointURL;
 
     @Autowired

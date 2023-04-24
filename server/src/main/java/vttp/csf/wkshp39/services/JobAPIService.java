@@ -24,10 +24,10 @@ import vttp.csf.wkshp39.models.JobListings;
 @Service
 public class JobAPIService {
 
-    @Value("${X-RapidAPI-Key}")
+    @Value("${x.rapidapi.key}")
     private String key;
 
-    @Value("${X-RapidAPI-Host}")
+    @Value("${x.rapidapi.host}")
     private String host;
 
     private static final String JOB_URL = "https://jsearch.p.rapidapi.com/search";

@@ -95,11 +95,12 @@ public class JobAPIService {
       List<Job> jobs = new LinkedList<>();
       // String -> JSONobject
       JsonReader reader = Json.createReader(new StringReader(resp.getBody()));
-      System.out.println(resp.getBody());
+      // System.out.println(resp.getBody());
       JsonObject json = reader.readObject();
 
       // get JsonArray from Json
       JsonArray results = json.getJsonArray("data");
+      System.out.println(results.toString());
 
       //map each JsonValue in result array to Job listing
       jobs = results

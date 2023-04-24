@@ -1,10 +1,8 @@
 
 img {
-
     width: 170px;
     height: 50px;
     position: relative;
- 
 }
 
 .bg-image {
@@ -12,22 +10,12 @@ img {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 70vh;
     }
 
 #overlay {
-    background: linear-gradient(to top, #0a66c23a 50%, #3c95ef63 70%) no-repeat;
-   
-   
+    background: linear-gradient(to top, #0a66c23a 50%, #3c95ef63 70%) no-repeat; 
 }
-
-.test {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    
-}
-
 
 a:hover {
     text-decoration: none;

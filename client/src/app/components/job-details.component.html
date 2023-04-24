@@ -1,18 +1,19 @@
 <mat-card>
-    <!-- <mat-card-header *ngFor="let jd of details">
-      <mat-card-content>{{ jd.job_id }}</mat-card-content>
-    </mat-card-header> -->
-
-    <!-- <img mat-card-image [src]="character.imagePath" /> -->
+  
     <mat-card-content *ngFor="let jd of details, let i = index">
       <mat-card-content>{{ jd.job_id }}</mat-card-content>
+      <img width="150" height= "150" src="{{jd.employer_logo}}"/>
       <mat-card-content>{{ jd.employer_name }}</mat-card-content>
       <mat-card-content>{{ jd.job_title }}</mat-card-content>
       <mat-card-content>{{ jd.job_country }}</mat-card-content>
       <mat-card-content>{{ jd.job_employment_type }}</mat-card-content>
+      <mat-card-content class="content">{{ jd.job_description }}</mat-card-content>
+
+      <br><br>
+
       <span><mat-icon aria-hidden="false" fontIcon="favorite_border" (click)="onSubmit(i)"></mat-icon>Favourite</span>
+      <span><mat-icon aria-hidden="false" fontIcon="assignment" (click)="applyJob(i)"></mat-icon>Apply job</span>
     </mat-card-content>
-    <!-- <button mat-raised-button color="primary" [disabled]="this.form.invalid">Save</button> -->
     
   </mat-card>
 

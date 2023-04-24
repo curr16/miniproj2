@@ -2,3 +2,72 @@
     display: flex;
     justify-content: space-between;
 }
+
+img.logo {
+    width: 170px;
+    height: 50px;
+    position: relative;
+}
+
+.bg-image {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+    }
+
+#overlay {
+    background: linear-gradient(to top, #0a66c23a 50%, #3c95ef63 70%) no-repeat; 
+}
+
+a:hover {
+    text-decoration: none;
+
+}
+
+.form-inline label {
+    padding-left: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.btn {
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.input-field button {
+    width: 50%;
+    padding: 0 30px;
+    border-radius: 50px;
+    border: none;
+    font-size: 16px;
+    position: relative;
+    height: 70px;
+}
+
+
+.input-field.error {
+    border: 1px solid red;
+    color: red;
+
+}
+
+.mat-elevation-z4 {
+    align-items: center;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10%;
+    
+}
+
+button.MD {
+    color: rgb(255, 255, 255);
+    background-color: #0a66c2;
+}
+
+.mat-card {
+    box-shadow: 0px 0px 10px 0px black,
+        0 1px 3px 0 #9b9b9b,
+        0 1px 3px 0 #9b9b9b;
+}

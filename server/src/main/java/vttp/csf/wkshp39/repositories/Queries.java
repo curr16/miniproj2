@@ -10,7 +10,8 @@ public class Queries {
     public static final String SQL_USER_SAVEJOB = "insert into UserJob(job_id, employer_name,job_title, job_country, job_employment_type, email)" +
                                                     "values(?, ?, ?, ?, ?, ?)";
 
-
+    public static final String SQL_CREATE_RESUME = "insert into ApplyJob(job_id, firstName, lastName, email, phone, resume, resumeURL)" +
+                                                    "values(?, ?, ?, ?, ?, ?, ?)";
 
      
 }

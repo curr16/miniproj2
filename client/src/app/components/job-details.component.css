@@ -6,3 +6,5 @@ img {
     display: flex;
     justify-content: space-between;
 }
+
+.content { white-space: pre-line; }

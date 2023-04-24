@@ -19,6 +19,7 @@ export class JobListComponent {
   // currOffset: number = 0;
   jobs: JobListing[] = [];
   email!: string
+  gridColumns = 3;
 
   defaultImage: string = "assets/images/placeholder.png"
   constructor(

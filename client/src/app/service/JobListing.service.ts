@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom, firstValueFrom } from 'rxjs';
-import { JobDetails, JobListing } from '../models/JobListing.model';
+import { ApplyJob, JobDetails, JobListing } from '../models/JobListing.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +30,23 @@ export class JobListingService {
         `http://localhost:8080/api/job-details/${job_id}`
       )
     );
+  }
+
+  uploadResume(jobApp: ApplyJob) {
+
+    const content = new FormData()
+    content.set("job_id", jobApp.job_id)
+    content.set("firstName", jobApp.firstName)
+    content.set("lastName", jobApp.lastName)
+    content.set("email", jobApp.email)
+    content.set("phone", jobApp.phone)
+    content.set("resume", jobApp.resume)
+  
+
+    return firstValueFrom(this.httpClient.post('http://localhost:8080/api/ApplyJob', content))
+
+
+
   }
 
   // postComment(jobId: number, comment: string) {

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { JobDetails } from '../models/JobListing.model';
 import { JobListingService } from '../service/JobListing.service';
@@ -18,38 +18,49 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
   details: JobDetails[] = [];
   sub$!: Subscription
   email!: string
+  defaultImage: string = "assets/images/placeholder.png"
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private jobSvc: JobListingService,
-    private userSvc: UserService
+    private userSvc: UserService,
+    private router: Router,
+    
 
   ) {}
 
   ngOnInit(): void {
+    
     // get job id from current route
     this.routeSub$ = this.activatedRoute.params.subscribe((params) => {
       this.job_id = params['job_id'];
       this.email = this.userSvc.email
-      console.info(this.email)
-      console.info(this.job_id)
       this.jobSvc
       .getJobById(this.job_id)
       .then((res) => {
-        this.details = res;
-        console.info(this.details)
+        this.details = res as JobDetails[];
+        if(res[0].employer_logo == null || res[0].employer_logo == "ul") {
+          res[0].employer_logo = this.defaultImage
+        }
       })
       .catch((err) => {
         console.log(err);
       });
     });
+    
 
     // retrieve job details from server
+    
     
   }
 
   onSubmit(i: number) {
     this.userSvc.saveJob(this.email, this.details[i])
+  }
+
+  applyJob(i: number) {
+    this.router.navigate(['/applyJob', this.details[i].job_id])
   }
 
   ngOnDestroy(): void {

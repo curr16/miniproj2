@@ -15,6 +15,7 @@ import { RegisterComponent } from './components/register.component';
 import { LoginComponent } from './components/login.component';
 import { UserService } from './service/User.service';
 import { ApplyJobComponent } from './components/apply-job.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ApplyJobComponent } from './components/apply-job.component';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FlexLayoutModule
 
   ],
   providers: [

@@ -15,17 +15,19 @@ public class JobService {
     private JobAPIService jobAPISvc;
 
     public List<JobListings> getJobs(String query, Integer pages) {
-
        return jobAPISvc.getJobs(query, pages);
 
     }
 
    public List<Job> getJobById(String jobId) {
-
       return jobAPISvc.getJobById(jobId);
       
    }
 
+   public void uploadResume() {
+      
+   }
+ 
  
 
  

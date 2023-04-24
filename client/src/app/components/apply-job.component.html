@@ -1,18 +1,44 @@
-<h1>Apply to "Insert company name" </h1>
-<form>
-<!-- <form [formGroup]="form"(ngSubmit)="submitForm()"> -->
-  <mat-form-field appearance="fill">
-    <mat-label>City</mat-label>
-    <input type="text"matInput placeholder="name" formControlName="name">
-    <input type="text"matInput placeholder="email" formControlName="email">
-    <input type="text"matInput placeholder="phone" formControlName="phone">
-    <br>
-    <p>Please upload your resume</p>
-    <input type="file" class="file-upload" onchange="console.log(event.target.files)">
-</mat-form-field>
-<br>
-    <button type="submit" mat-raised-button color="primary" >Submit</button>
-</form>
+<div class="offset-md-2-col-lg-5 col-md-4 offset-lg-1 offset-md-3">
+  <img src="assets/images/logo.png" class="logo" />
+</div>
 
-
-<!-- <button type="submit" class="btn btn-primary btn-block mt-4 w-100" [disabled]="this.form.invalid">Login</button> -->
+<div class="offset-md-2-col-lg-5 col-md-4 offset-lg-4 offset-md-3">
+  <div class="panel border">
+    <div class="panel-heading">
+      <h2 class="pt-3 font-weight-bold">Apply to {{this.companyName}}</h2>
+    </div>
+    <div class="panel-body p-3">
+      <form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
+        <div class="form-group pt-3">
+          <div class="input-field">
+            <span class="fa fa-user p-2"></span>
+            <input type="text" formControlName="firstName" placeholder="firstName"/>
+          </div>
+        </div>
+        <div class="form-group pt-3">
+          <div class="input-field">
+            <span class="fa fa-user p-2"></span>
+            <input type="text" formControlName="lastName" placeholder="lastName"/>
+          </div>
+        </div>
+        <div class="form-group pt-3">
+          <div class="input-field">
+            <span class="fa fa-envelope-open-o p-2"></span>
+            <input type="text" formControlName="email" placeholder="email"/>
+          </div>
+        </div>
+        <div class="form-group pt-3">
+          <div class="input-field">
+            <span class="fa fa-lock p-2"></span>
+            <input type="text"matInput placeholder="phone" formControlName="phone">
+            <span class="fa fa-phone p-2"></span>
+          </div>
+            <p>Please upload your resume</p>
+          <input type="file" formControlName="resume" #image>
+          
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

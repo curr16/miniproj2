@@ -6,14 +6,12 @@
   <div id="overlay" class="bg-image">
       <div class="offset-md-2-col-lg-5 col-md-4 offset-lg-4 offset-md-3">
         <div class="panel-body p-3">
-          <div class="test">
           <div class="input-field">
               <form [formGroup]="form" (ngSubmit)="submitForm()">
               <input type="text" formControlName="jobStartsWith" placeholder="Jobs?(e.g. Designer)"/>
               <button type="submit" [disabled]="form.invalid"><span class="fa fa-search p-2"></span></button>
             </form>
           </div>
-        </div>
       </div>
     </div>
   </div>

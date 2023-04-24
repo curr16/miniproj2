@@ -21,6 +21,7 @@ import jakarta.json.JsonReader;
 import vttp.csf.wkshp39.models.Job;
 import vttp.csf.wkshp39.models.User;
 import vttp.csf.wkshp39.services.UserService;
+import vttp.csf.wkshp39.services.googleAPIservice;
 
 @Controller
 @RequestMapping (path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -30,8 +31,11 @@ public class UserController {
     @Autowired
     private UserService userSvc;
 
+    @Autowired
+    private googleAPIservice gSvc;
+
     @PostMapping (path = "/register")
-    public ResponseEntity<String> getUser(@RequestBody String payload) {
+    public ResponseEntity<String> getUser(@RequestBody String payload) throws Exception {
         System.out.println(payload);
 
         JsonReader reader = Json.createReader(new StringReader(payload));
@@ -43,6 +47,7 @@ public class UserController {
         }
         User newUser = User.create(json);
         userSvc.saveUserDetail(newUser);
+        gSvc.sendMail(newUser);
         return ResponseEntity.ok(payload);
     }
 

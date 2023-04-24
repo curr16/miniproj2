@@ -13,7 +13,11 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;
+
+import vttp.csf.wkshp39.models.User;
+
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.stereotype.Service;
 
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -28,10 +32,16 @@ import java.util.Set;
 import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
 import static javax.mail.Message.RecipientType.TO;
 
+@Service
 public class googleAPIservice {
 
     private static final String TEST_EMAIL = "pxtan1997@gmail.com";
     private final Gmail service;
+    private static final String subject = 
+    """
+    Thank you for your registration
+            
+            """;
 
     public googleAPIservice() throws Exception {
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
@@ -55,12 +65,20 @@ public class googleAPIservice {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-    public void sendMail(String subject, String message) throws Exception {
+    public void sendMail(User user) throws Exception {
+        String message = """
+        Hello %s,\n\n
+        Welcome to JobGuru! You have successfully created an account. We'll keep you
+        posted on the latest job offers and updates.\n\n
+        If you have any questions, feel free to reach out to us
+        at hello@jobguru.com.\n\nTeam JobGuru 
+                
+        """.formatted(user.getFirstName());
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
         email.setFrom(new InternetAddress(TEST_EMAIL));
-        email.addRecipient(TO, new InternetAddress(TEST_EMAIL));
+        email.addRecipient(TO, new InternetAddress(user.getEmail()));
         email.setSubject(subject);
         email.setText(message);
 
@@ -83,17 +101,6 @@ public class googleAPIservice {
                 throw e;
             }
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        new googleAPIservice().sendMail("A new message", """
-            Dear reader,
-                            
-            Hello world.
-                            
-            Best regards,
-            myself
-            """);
     }
 
 }
